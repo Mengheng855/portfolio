@@ -1,0 +1,998 @@
+<!--  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smos - Web Designer Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #3498db;
+            --dark-blue: #2980b9;
+            --light-gray: #222222;
+            --medium-gray: #333333;
+            --text-dark: #ffffff;
+            --text-light: #cccccc;
+            --white: #000000;
+            --accent-color: #e74c3c;
+        }
+
+        body {
+            /*  */
+            font-family: 'Arial', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background-color: black;
+        }
+
+        /* Navigation - From image: Clean white navbar with blue logo */
+        .navbar {
+            background-color: var(--white) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--primary-blue) !important;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--text-dark) !important;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section - From image: Blue gradient background */
+        .hero {
+            background: linear-gradient(135deg, black 0%, var(--primary-blue) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--text-dark);
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-name {
+            color: #ffeb3b;
+            display: block;
+            font-weight: 700;
+        }
+
+        .btn-hero {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-hero:hover {
+            background-color: #f8f9fa;
+            color: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section - From image: White background with blue title */
+        .about-section {
+            padding: 120px 0;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-blue);
+        }
+
+        .about-content {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .btn-about {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-about:hover {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        /* skill Section - From image: Light gray background */
+        .skill-section {
+            background-color: var(--light-gray);
+            padding: 100px 0;
+        }
+
+        .skill-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .skill-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            background-color: var(--white);
+            padding: 100px 0;
+        }
+
+        .experience-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .experience-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-blue);
+        }
+
+        .experience-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            height: 100%;
+            transition: all 0.4s ease;
+            border: 1px solid var(--medium-gray);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--dark-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 60px;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .service-description {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .btn-service {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-service:hover {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Footer - Fixed: Changed to black background */
+        footer {
+            background-color: #000000 !important;
+            color: var(--text-dark);
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+            padding-left: 5px;
+        }
+
+        .footer-links i {
+            width: 20px;
+            margin-right: 10px;
+            color: var(--primary-blue);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #95a5a6;
+            font-size: 14px;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue);
+            color: var(--text-dark);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Floating animation for hero image */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hero img {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .skill-title {
+                font-size: 2.2rem;
+            }
+
+            .experience-title {
+                font-size: 2.2rem;
+            }
+
+            .navbar-nav {
+                text-align: center;
+                background-color: var(--white);
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 10px;
+            }
+        }
+
+        /* Typing animation for hero text */
+        .typed-cursor {
+            font-size: 3.8rem;
+            color: #ffeb3b;
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">SMOS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skill">SKILL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">EXPERIENCE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 hero-content fade-in">
+                    <h2 class="hero-title">I'm a Web Developer</h2>
+                    <h1 class="hero-title"><span class="hero-name">Kheang Mengheng</span></h1>
+                    <p class="hero-subtitle">
+                        I design and build modern, responsive websites that are fast, user-friendly,
+                        and tailored to real-world needs.
+                    </p>
+                    <button class="btn btn-hero">Explore My Work</button>
+                </div>
+                <div class="col-lg-5 fade-in">
+                    <!-- Placeholder for designer illustration -->
+                    <div class="text-center">
+                        <div
+                            style="width: 100%; height: 400px;  border-radius: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <img src="image.png" alt=""
+                                style="max-width: 100%; max-height: 100%;  border-radius: 20px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0 fade-in">
+                    <h2 class="section-title">PROFESSIONAL WEB DESIGNER</h2>
+                    <p class="about-content">
+                        I’m a creative web developer who loves turning ideas into clean, modern websites.
+                        I focus on building fast, responsive, and user-friendly designs that work perfectly
+                        on all devices. My goal is to create websites that not only look great, but also
+                        help people and businesses grow online.
+                    </p>
+                    <button class="btn btn-about">Learn More</button>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <!-- Placeholder for about image -->
+                    <div
+                        style="width: 100%; height: 400px;  border-radius: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="smos.jpg" alt="" style="max-width: 100%; max-height: 100%;  border-radius: 20px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- skill Section -->
+    <section id="skill" class="skill-section">
+        <div class="container">
+            <h2 class="skill-title fade-in">MY SKILL</h2>
+            <p class="skill-subtitle fade-in">
+                Explore my technical expertise across different areas of web development.
+            </p>
+
+            <div class="row mt-4">
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3 class="service-title">Web Frontend</h3>
+                        <p class="service-description">
+                            Building responsive and interactive user interfaces using HTML, CSS, and JavaScript.
+                            Creating engaging web experiences with modern frontend technologies.
+                        </p>
+                        <div class="skills-list" id="frontend-skills">
+                            <ul style="list-style: none; padding: 0; margin: 20px 0;">
+                                <li style="margin-bottom: 10px;"><i class="fab fa-html5"
+                                        style="color: #e34f26; margin-right: 10px;"></i>HTML</li>
+                                <li style="margin-bottom: 10px;"><i class="fab fa-css3-alt"
+                                        style="color: #1572b6; margin-right: 10px;"></i>CSS</li>
+                                <li style="margin-bottom: 10px;"><i class="fab fa-js-square"
+                                        style="color: #f7df1e; margin-right: 10px;"></i>JavaScript</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-service">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="service-title">Web Backend</h3>
+                        <p class="service-description">
+                            Developing robust server-side applications and APIs using PHP, Python, and Node.js.
+                            Managing databases and ensuring scalable backend solutions.
+                        </p>
+                        <div class="skills-list" id="backend-skills">
+                            <ul style="list-style: none; padding: 0; margin: 20px 0;">
+                                <li style="margin-bottom: 10px;"><i class="fab fa-php"
+                                        style="color: #777bb4; margin-right: 10px;"></i>PHP</li>
+                                <li style="margin-bottom: 10px;"><i class="fab fa-python"
+                                        style="color: #3776ab; margin-right: 10px;"></i>Python</li>
+                                <li style="margin-bottom: 10px;"><i class="fab fa-node-js"
+                                        style="color: #339933; margin-right: 10px;"></i>Node.js</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-service">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="service-title">Framework</h3>
+                        <p class="service-description">
+                            Utilizing powerful frameworks like React, Vue.js, Laravel, and Django for efficient
+                            development.
+                            Building structured and maintainable web applications.
+                        </p>
+                        <div class="skills-list" id="framework-skills">
+                            <ul style="list-style: none; padding: 0; margin: 20px 0;">
+                                <li style="margin-bottom: 10px;"><i class="fab fa-vuejs"
+                                        style="color: #4fc08d; margin-right: 10px;"></i>Vue JS</li>
+                                <li style="margin-bottom: 10px;"><i class="fab fa-bootstrap"
+                                        style="color: #7952b3; margin-right: 10px;"></i>Bootstrap</li>
+                                <li style="margin-bottom: 10px;"><i class="fas fa-palette"
+                                        style="color: #38bdf8; margin-right: 10px;"></i>Tailwind CSS</li>
+                                <li style="margin-bottom: 10px;"><i class="fab fa-laravel"
+                                        style="color: #ff2d20; margin-right: 10px;"></i>Laravel</li>
+                                <li style="margin-bottom: 10px;"><i class="fab fa-python"
+                                        style="color: #3776ab; margin-right: 10px;"></i>Flask</li>
+                                <li style="margin-bottom: 10px;"><i class="fab fa-python"
+                                        style="color: #092e20; margin-right: 10px;"></i>Django</li>
+                                <li style="margin-bottom: 10px;"><i class="fab fa-python"
+                                        style="color: #009688; margin-right: 10px;"></i>FastAPI</li>
+                                <li style="margin-bottom: 10px;"><i class="fab fa-node-js"
+                                        style="color: #339933; margin-right: 10px;"></i>Express</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-service">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="service-title">Library</h3>
+                        <p class="service-description">
+                            Leveraging libraries like jQuery, Bootstrap, and Tailwind CSS for enhanced functionality.
+                            Integrating third-party tools to accelerate development.
+                        </p>
+                        <div class="skills-list" id="library-skills">
+                            <ul style="list-style: none; padding: 0; margin: 20px 0;">
+                                <li style="margin-bottom: 10px;"><i class="fab fa-js-square"
+                                        style="color: #f7df1e; margin-right: 10px;"></i>jQuery</li>
+                                <li style="margin-bottom: 10px;"><i class="fab fa-react"
+                                        style="color: #61dafb; margin-right: 10px;"></i>React JS</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-service">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <h2 class="experience-title fade-in">MY EXPERIENCE</h2>
+            <p class="experience-subtitle fade-in">
+                Skills and real-world experience gained through building modern web applications.
+            </p>
+
+
+            <div class="row mt-4">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="service-title">Frontend Developer</h3>
+                        <p class="service-description">
+                            Planning and organizing projects from start to finish.
+                            Coordinating teams to deliver high-quality results on time.
+                        </p>
+
+                        <button class="btn btn-service">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="service-title">Backend Developer</h3>
+                        <p class="service-description">
+                            Developing secure and scalable backend systems.
+                            Experienced in APIs, databases, and server-side logic for web applications.
+                        </p>
+
+                        <button class="btn btn-service">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="service-title">Project Manager</h3>
+                        <p class="service-description">
+                            Planning and organizing projects from start to finish.
+                            Coordinating teams to deliver high-quality results on time.
+                        </p>
+
+                        <button class="btn btn-service">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Footer Section -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-5 mb-lg-0 fade-in">
+                    <h4 class="footer-title">Smos</h4>
+                    <p style="color: #bdc3c7; line-height: 1.7; margin-bottom: 25px;">
+                        Professional web developer specializing in modern web technologies.
+                        Creating innovative solutions for businesses and individuals.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1BrvsewAxu/" class="social-icon"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/imbrokenn1926" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/imbrokennnnnnnn?igsh=MXB2eGJub2Jmd2Ezcg=="
+                            class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-5 mb-lg-0 fade-in">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#skill"><i class="fas fa-chevron-right"></i> Skill</a></li>
+                        <li><a href="#experience"><i class="fas fa-chevron-right"></i> Experience</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-5 mb-lg-0 fade-in">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 2002, Tuek Thla, Sensok , Phnom Penh</li>
+                        <li><i class="fas fa-phone"></i> +855 77 056 653</li>
+                        <li><i class="fas fa-envelope"></i> mengheng.mh855@gmail.com</li>
+                        <li><i class="fas fa-globe"></i> www.techdesign.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright fade-in">
+                <p>&copy; 2023 Tech Design Portfolio. All rights reserved. | Designed with passion</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarToggler.click();
+                    }
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+
+        // Initial check
+        fadeInOnScroll();
+
+        // Check on scroll
+        window.addEventListener('scroll', fadeInOnScroll);
+
+        // Typing effect for hero text
+        const heroName = document.querySelector('.hero-name');
+        const nameText = "Kheang Mengheng";
+        let nameIndex = 0;
+        let isDeleting = false;
+
+        function typeWriter() {
+            if (!isDeleting) {
+                if (nameIndex < nameText.length) {
+                    heroName.innerHTML += nameText.charAt(nameIndex);
+                    nameIndex++;
+                    setTimeout(typeWriter, 100);
+                } else {
+                    isDeleting = true;
+                    setTimeout(typeWriter, 1000); // Pause before deleting
+                }
+            } else {
+                if (nameIndex > 0) {
+                    heroName.innerHTML = nameText.substring(0, nameIndex - 1);
+                    nameIndex--;
+                    setTimeout(typeWriter, 50);
+                } else {
+                    isDeleting = false;
+                    setTimeout(typeWriter, 500); // Pause before typing again
+                }
+            }
+        }
+
+        // Start typing after page loads
+        window.addEventListener('load', function () {
+            heroName.innerHTML = '';
+            setTimeout(typeWriter, 500);
+        });
+
+        // Learn More buttons functionality
+        document.querySelectorAll('.btn-hero, .btn-about, .btn-service').forEach(button => {
+            button.addEventListener('click', function () {
+                const buttonType = this.classList.contains('btn-hero') ? 'hero' :
+                    this.classList.contains('btn-about') ? 'about' : 'service';
+
+                if (buttonType === 'hero') {
+                    document.querySelector('#about').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                } else if (buttonType === 'about') {
+                    document.querySelector('#skill').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                } else {
+                    // Check if button is in skill section
+                    if (this.closest('#skill')) {
+                        const cardTitle = this.closest('.service-card').querySelector('.service-title').textContent;
+                        if (cardTitle.includes('Web Frontend')) {
+                            window.location.href = 'frontend.html';
+                        } else if (cardTitle.includes('Web Backend')) {
+                            window.location.href = 'backend.html';
+                        } else if (cardTitle.includes('Framework')) {
+                            window.location.href = 'framework.html';
+                        } else if (cardTitle.includes('Library')) {
+                            window.location.href = 'library.html';
+                        }
+                    } else {
+                        alert('Service details would open here!');
+                    }
+                }
+            });
+        });
+
+        // Add active class to current nav link
+        const sections = document.querySelectorAll('section[id]');
+
+        window.addEventListener('scroll', function () {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+    </script>
+</body>
+
+</html>
