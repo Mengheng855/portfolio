@@ -1,4 +1,3 @@
-<!--  -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +20,6 @@
         }
 
         body {
-            /*  */
             font-family: 'Arial', 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
@@ -52,10 +50,11 @@
         .nav-link {
             font-weight: 600;
             color: var(--text-dark) !important;
-            margin: 0 15px;
+            margin: 0 8px;
             transition: all 0.3s ease;
             font-size: 16px;
             position: relative;
+            padding: 8px 15px !important;
         }
 
         .nav-link:hover {
@@ -66,15 +65,140 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 0;
+            left: 15px;
+            width: calc(100% - 30px);
             height: 2px;
             background-color: var(--primary-blue);
-            transition: width 0.3s ease;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
         .nav-link:hover::after {
-            width: 100%;
+            transform: scaleX(1);
+        }
+
+        /* Fixed: Navbar toggler icon now visible */
+        .navbar-toggler {
+            border: 2px solid var(--primary-blue);
+            font-size: 24px;
+            padding: 8px 12px;
+            background-color: var(--white);
+            border-radius: 5px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+            outline: none;
+        }
+
+        .navbar-toggler::before {
+            content: "☰";
+            color: var(--primary-blue) !important;
+            font-weight: bold;
+        }
+
+        .navbar-toggler-icon {
+            display: none;
+        }
+
+        /* IMPORTANT: Make navbar collapse push content down, not overlay */
+        .navbar-collapse {
+            background-color: var(--white);
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: static !important;
+                width: 100%;
+                margin-top: 15px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                border: 1px solid rgba(52, 152, 219, 0.2);
+            }
+            
+            /* This makes the dropdown menu push content down */
+            .navbar-collapse.collapsing,
+            .navbar-collapse.show {
+                height: auto !important;
+                overflow: visible !important;
+                transition: none !important;
+            }
+            
+            /* Adjust hero section padding when navbar is expanded */
+            .navbar-expand-lg ~ .hero {
+                transition: padding-top 0.3s ease;
+            }
+            
+            /* When navbar is expanded on mobile, add more padding to hero */
+            .navbar-expand-lg .navbar-collapse.show ~ .hero {
+                padding-top: 300px !important;
+            }
+        }
+
+        /* Dropdown menu styling */
+        .dropdown-menu {
+            background-color: var(--white);
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 10px 0;
+            margin-top: 10px;
+        }
+
+        .dropdown-item {
+            color: var(--text-dark) !important;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-blue) !important;
+            padding-left: 25px;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            margin-right: 10px;
+            color: var(--primary-blue);
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid rgba(52, 152, 219, 0.2);
+            margin: 5px 0;
+        }
+
+        .dropdown-toggle::after {
+            margin-left: 5px;
+            vertical-align: middle;
+            border-top-color: var(--text-dark);
+        }
+
+        .nav-link.dropdown-toggle:hover::after {
+            border-top-color: var(--primary-blue);
+        }
+
+        /* Active link styling - FIXED for all nav items */
+        .nav-link.active {
+            color: var(--primary-blue) !important;
+            font-weight: 700;
+        }
+
+        .nav-link.active::after {
+            transform: scaleX(1) !important;
+        }
+
+        /* Active state for dropdown items too */
+        .dropdown-item.active {
+            color: var(--primary-blue) !important;
+            font-weight: 700;
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        .dropdown-item.active i {
+            color: var(--primary-blue) !important;
         }
 
         /* Hero Section - From image: Blue gradient background */
@@ -87,6 +211,7 @@
             position: relative;
             overflow: hidden;
             padding-top: 100px;
+            transition: padding-top 0.5s ease;
         }
 
         .hero::before {
@@ -483,12 +608,10 @@
                 font-size: 2.2rem;
             }
 
-            .navbar-nav {
-                text-align: center;
-                background-color: var(--white);
-                padding: 20px;
-                border-radius: 10px;
-                margin-top: 10px;
+            .dropdown-menu {
+                background-color: rgba(0, 0, 0, 0.9);
+                border: 1px solid var(--primary-blue);
+                margin-left: 20px;
             }
         }
 
@@ -529,17 +652,62 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#home">HOME</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">ABOUT</a>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            ABOUT
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="#about"><i class="fas fa-user"></i> About Me</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-certificate"></i> Certifications</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Download CV</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skill">SKILL</a>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            SKILL
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="skillDropdown">
+                            <li><a class="dropdown-item" href="#skill"><i class="fas fa-code"></i> All Skills</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fab fa-html5"></i> Frontend Development</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-server"></i> Backend Development</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Frameworks</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-book-open"></i> Libraries</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#experience">EXPERIENCE</a>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="experienceDropdown" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            EXPERIENCE
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="experienceDropdown">
+                            <li><a class="dropdown-item" href="#experience"><i class="fas fa-briefcase"></i> Work Experience</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-laptop-code"></i> Freelance Work</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-users"></i> Client Testimonials</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">CONTACT</a>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            CONTACT
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+                            <li><a class="dropdown-item" href="#contact"><i class="fas fa-address-card"></i> Contact Info</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Send Message</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-calendar-alt"></i> Schedule Meeting</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-contract"></i> Hire Me</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -580,7 +748,7 @@
                 <div class="col-lg-6 mb-5 mb-lg-0 fade-in">
                     <h2 class="section-title">PROFESSIONAL WEB DESIGNER</h2>
                     <p class="about-content">
-                        I’m a creative web developer who loves turning ideas into clean, modern websites.
+                        I'm a creative web developer who loves turning ideas into clean, modern websites.
                         I focus on building fast, responsive, and user-friendly designs that work perfectly
                         on all devices. My goal is to create websites that not only look great, but also
                         help people and businesses grow online.
@@ -840,23 +1008,25 @@
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+                // Don't prevent default for dropdown items that don't have # links
+                if (this.getAttribute('href').startsWith('#') && this.getAttribute('href') !== '#') {
+                    e.preventDefault();
 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-
-                    // Close mobile menu if open
-                    const navbarToggler = document.querySelector('.navbar-toggler');
-                    const navbarCollapse = document.querySelector('.navbar-collapse');
-                    if (navbarCollapse.classList.contains('show')) {
-                        navbarToggler.click();
+                        // Close mobile menu if open
+                        const navbarToggler = document.querySelector('.navbar-toggler');
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse.classList.contains('show')) {
+                            navbarToggler.click();
+                        }
                     }
                 }
             });
@@ -952,12 +1122,13 @@
             });
         });
 
-        // Add active class to current nav link
+        // Add active class to current nav link for ALL nav items including dropdowns
         const sections = document.querySelectorAll('section[id]');
 
         window.addEventListener('scroll', function () {
             let current = '';
 
+            // Find current section
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
@@ -966,10 +1137,57 @@
                 }
             });
 
+            // Remove active class from ALL nav links and dropdown items
+            document.querySelectorAll('.nav-link, .dropdown-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Add active class to main nav links that match the current section
             document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
+                    
+                    // Also activate parent dropdown if this is a dropdown item
+                    const parentDropdown = link.closest('.dropdown-menu');
+                    if (parentDropdown) {
+                        const dropdownToggle = parentDropdown.previousElementSibling;
+                        if (dropdownToggle && dropdownToggle.classList.contains('dropdown-toggle')) {
+                            dropdownToggle.classList.add('active');
+                        }
+                    }
+                }
+            });
+
+            // Add active class to dropdown items that match the current section
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                    
+                    // Also activate parent dropdown toggle
+                    const parentDropdown = item.closest('.dropdown-menu');
+                    if (parentDropdown) {
+                        const dropdownToggle = parentDropdown.previousElementSibling;
+                        if (dropdownToggle && dropdownToggle.classList.contains('dropdown-toggle')) {
+                            dropdownToggle.classList.add('active');
+                        }
+                    }
+                }
+            });
+
+            // Special handling for dropdown toggles that have a matching href in their dropdown
+            document.querySelectorAll('.dropdown-toggle').forEach(dropdown => {
+                const dropdownItems = dropdown.nextElementSibling.querySelectorAll('.dropdown-item');
+                let shouldBeActive = false;
+                
+                dropdownItems.forEach(item => {
+                    if (item.getAttribute('href') === `#${current}`) {
+                        shouldBeActive = true;
+                        item.classList.add('active');
+                    }
+                });
+                
+                if (shouldBeActive) {
+                    dropdown.classList.add('active');
                 }
             });
         });
@@ -989,6 +1207,41 @@
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
+            });
+        });
+
+        // Update active nav on page load
+        window.addEventListener('load', function() {
+            // Trigger scroll to set initial active state
+            window.dispatchEvent(new Event('scroll'));
+        });
+
+        // JavaScript to adjust hero section when navbar expands
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            const heroSection = document.querySelector('.hero');
+            
+            navbarToggler.addEventListener('click', function() {
+                // Small delay to let Bootstrap do its thing
+                setTimeout(() => {
+                    if (navbarCollapse.classList.contains('show')) {
+                        // Menu is opening - push hero content down
+                        heroSection.style.paddingTop = '350px';
+                    } else {
+                        // Menu is closing - bring hero content back up
+                        heroSection.style.paddingTop = '100px';
+                    }
+                }, 10);
+            });
+            
+            // Close menu when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 991.98) {
+                    if (!event.target.closest('.navbar') && navbarCollapse.classList.contains('show')) {
+                        navbarToggler.click();
+                    }
+                }
             });
         });
 
