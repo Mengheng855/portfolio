@@ -136,49 +136,6 @@
             }
         }
 
-        /* Dropdown menu styling */
-        .dropdown-menu {
-            background-color: var(--white);
-            border: 1px solid rgba(52, 152, 219, 0.2);
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            padding: 10px 0;
-            margin-top: 10px;
-        }
-
-        .dropdown-item {
-            color: var(--text-dark) !important;
-            padding: 10px 20px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown-item:hover {
-            background-color: rgba(52, 152, 219, 0.1);
-            color: var(--primary-blue) !important;
-            padding-left: 25px;
-        }
-
-        .dropdown-item i {
-            width: 20px;
-            margin-right: 10px;
-            color: var(--primary-blue);
-        }
-
-        .dropdown-divider {
-            border-top: 1px solid rgba(52, 152, 219, 0.2);
-            margin: 5px 0;
-        }
-
-        .dropdown-toggle::after {
-            margin-left: 5px;
-            vertical-align: middle;
-            border-top-color: var(--text-dark);
-        }
-
-        .nav-link.dropdown-toggle:hover::after {
-            border-top-color: var(--primary-blue);
-        }
 
         /* Active link styling - FIXED for all nav items */
         .nav-link.active {
@@ -190,16 +147,6 @@
             transform: scaleX(1) !important;
         }
 
-        /* Active state for dropdown items too */
-        .dropdown-item.active {
-            color: var(--primary-blue) !important;
-            font-weight: 700;
-            background-color: rgba(52, 152, 219, 0.1);
-        }
-
-        .dropdown-item.active i {
-            color: var(--primary-blue) !important;
-        }
 
         /* Hero Section - From image: Blue gradient background */
         .hero {
@@ -455,6 +402,7 @@
             color: var(--text-dark);
             padding: 80px 0 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 100px; /* Ensure footer has enough height to be detected */
         }
 
         .footer-title {
@@ -607,12 +555,6 @@
             .experience-title {
                 font-size: 2.2rem;
             }
-
-            .dropdown-menu {
-                background-color: rgba(0, 0, 0, 0.9);
-                border: 1px solid var(--primary-blue);
-                margin-left: 20px;
-            }
         }
 
         /* Typing animation for hero text */
@@ -652,62 +594,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#home">HOME</a>
                     </li>
-                    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" 
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            ABOUT
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                            <li><a class="dropdown-item" href="#about"><i class="fas fa-user"></i> About Me</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-graduation-cap"></i> Education</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-certificate"></i> Certifications</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Download CV</a></li>
-                        </ul>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">ABOUT</a>
                     </li>
                     
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button" 
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            SKILL
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="skillDropdown">
-                            <li><a class="dropdown-item" href="#skill"><i class="fas fa-code"></i> All Skills</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fab fa-html5"></i> Frontend Development</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-server"></i> Backend Development</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Frameworks</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-book-open"></i> Libraries</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skill">SKILL</a>
                     </li>
                     
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="experienceDropdown" role="button" 
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            EXPERIENCE
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="experienceDropdown">
-                            <li><a class="dropdown-item" href="#experience"><i class="fas fa-briefcase"></i> Work Experience</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-project-diagram"></i> Projects</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-laptop-code"></i> Freelance Work</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-users"></i> Client Testimonials</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">EXPERIENCE</a>
                     </li>
                     
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" 
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            CONTACT
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="contactDropdown">
-                            <li><a class="dropdown-item" href="#contact"><i class="fas fa-address-card"></i> Contact Info</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Send Message</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-calendar-alt"></i> Schedule Meeting</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-contract"></i> Hire Me</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">CONTACT</a>
                     </li>
                 </ul>
             </div>
@@ -978,7 +879,7 @@
                         <li><i class="fas fa-map-marker-alt"></i> 2002, Tuek Thla, Sensok , Phnom Penh</li>
                         <li><i class="fas fa-phone"></i> +855 77 056 653</li>
                         <li><i class="fas fa-envelope"></i> mengheng.mh855@gmail.com</li>
-                        <li><i class="fas fa-globe"></i> https://imbrokenportfolio.netlify.app/</li>
+                        <li><i class="fas fa-globe"></i>https://kheangmengheng.vercel.app/</li>
                     </ul>
                 </div>
             </div>
@@ -1122,76 +1023,6 @@
             });
         });
 
-        // Add active class to current nav link for ALL nav items including dropdowns
-        const sections = document.querySelectorAll('section[id]');
-
-        window.addEventListener('scroll', function () {
-            let current = '';
-
-            // Find current section
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 150)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            // Remove active class from ALL nav links and dropdown items
-            document.querySelectorAll('.nav-link, .dropdown-item').forEach(item => {
-                item.classList.remove('active');
-            });
-
-            // Add active class to main nav links that match the current section
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                    
-                    // Also activate parent dropdown if this is a dropdown item
-                    const parentDropdown = link.closest('.dropdown-menu');
-                    if (parentDropdown) {
-                        const dropdownToggle = parentDropdown.previousElementSibling;
-                        if (dropdownToggle && dropdownToggle.classList.contains('dropdown-toggle')) {
-                            dropdownToggle.classList.add('active');
-                        }
-                    }
-                }
-            });
-
-            // Add active class to dropdown items that match the current section
-            document.querySelectorAll('.dropdown-item').forEach(item => {
-                if (item.getAttribute('href') === `#${current}`) {
-                    item.classList.add('active');
-                    
-                    // Also activate parent dropdown toggle
-                    const parentDropdown = item.closest('.dropdown-menu');
-                    if (parentDropdown) {
-                        const dropdownToggle = parentDropdown.previousElementSibling;
-                        if (dropdownToggle && dropdownToggle.classList.contains('dropdown-toggle')) {
-                            dropdownToggle.classList.add('active');
-                        }
-                    }
-                }
-            });
-
-            // Special handling for dropdown toggles that have a matching href in their dropdown
-            document.querySelectorAll('.dropdown-toggle').forEach(dropdown => {
-                const dropdownItems = dropdown.nextElementSibling.querySelectorAll('.dropdown-item');
-                let shouldBeActive = false;
-                
-                dropdownItems.forEach(item => {
-                    if (item.getAttribute('href') === `#${current}`) {
-                        shouldBeActive = true;
-                        item.classList.add('active');
-                    }
-                });
-                
-                if (shouldBeActive) {
-                    dropdown.classList.add('active');
-                }
-            });
-        });
-
         // Back to Top Button
         const backToTopButton = document.getElementById('backToTop');
 
@@ -1208,12 +1039,6 @@
                 top: 0,
                 behavior: 'smooth'
             });
-        });
-
-        // Update active nav on page load
-        window.addEventListener('load', function() {
-            // Trigger scroll to set initial active state
-            window.dispatchEvent(new Event('scroll'));
         });
 
         // JavaScript to adjust hero section when navbar expands
@@ -1243,6 +1068,48 @@
                     }
                 }
             });
+        });
+
+        // FIXED: Active navigation using Intersection Observer
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section[id], footer[id]');
+
+            // Create Intersection Observer
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        
+                        // Remove active class from all nav links
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        
+                        // Add active class to corresponding nav link
+                        const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, {
+                root: null, // viewport
+                rootMargin: '-100px 0px -20% 0px', // Adjust these values as needed
+                threshold: 0.2 // 20% of the section must be visible
+            });
+
+            // Observe each section
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Set home as active initially
+            const homeLink = document.querySelector('.nav-link[href="#home"]');
+            if (homeLink && window.scrollY === 0) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                homeLink.classList.add('active');
+            }
         });
 
     </script>
